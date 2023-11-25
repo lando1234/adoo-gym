@@ -1,21 +1,21 @@
-
-import java.util.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * 
  */
-public class Socio-Observado implements IAdapter, IAdapterLogin {
+public class ISocioObserver implements IAdapter, IAdapterLogin {
 
     /**
      * Default constructor
      */
-    public Socio-Observado() {
+    public ISocioObserver() {
     }
 
     /**
      * 
      */
-    private Int edad;
+    private Integer edad;
 
     /**
      * 
@@ -32,20 +32,12 @@ public class Socio-Observado implements IAdapter, IAdapterLogin {
      */
     private Objetivo objetivo;
 
-    /**
-     * 
-     */
-    private void trofeos;
 
     /**
      * 
      */
-    private List<Trofeo> trofeo;
+    private ArrayList<ITrofeoObserver> trofeo;
 
-    /**
-     * 
-     */
-    private void pesoFinal;
 
     /**
      * 
@@ -55,38 +47,28 @@ public class Socio-Observado implements IAdapter, IAdapterLogin {
     /**
      * 
      */
-    private List<Medicion> mediciones;
+    private ArrayList<Medicion> mediciones;
 
     /**
      * 
      */
-    private string user;
+    private String user;
 
     /**
      * 
      */
-    private string password;
+    private String password;
 
     /**
      * 
      */
-    private List<Trofeo-IObservador> observadores;
+    private ArrayList<ITrofeoObserver> observadores;
 
     /**
      * @return
      */
     public void registrarMedicion() {
         // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param login 
-     * @return
-     */
-    public Boolean login(Boolean login) {
-        // TODO implement here
-        return null;
     }
 
     /**

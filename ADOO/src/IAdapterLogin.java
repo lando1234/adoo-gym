@@ -6,10 +6,7 @@ import java.util.*;
  */
 public interface IAdapterLogin {
 
-    /**
-     * @param Login 
-     * @return
-     */
-    public Boolean login(Boolean Login);
+
+    public Optional<SocioDTO> login();
 
 }

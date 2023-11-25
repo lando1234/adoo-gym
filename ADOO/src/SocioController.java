@@ -1,3 +1,5 @@
+import java.util.Optional;
+
 /**
  * 
  */
@@ -14,7 +16,7 @@ public class SocioController {
      * @return
      */
     public void crearSocio(SocioDTO Socio) {
-        // TODO implement here
+
     }
 
     /**
@@ -29,11 +31,22 @@ public class SocioController {
     }
 
     /**
-     * @param Socio 
+     * @param user
+     * @param password
      * @return
      */
-    public void login(SocioDTO Socio) {
-        // TODO implement here
+    public void login(String user, String password) {
+        LoginAdapter loginAdapter = new LoginAdapter(user,password);
+
+        Optional<SocioDTO> socioDTO = loginAdapter.login();
+
+        socioDTO.ifPresent( socio -> LoggedUsersRepository.getInstance().login( extractSocio(socio) ));
+
+    }
+
+    private Socio extractSocio(SocioDTO socio) {
+        // obtener Trofeos
+        // obtener Mediciones
     }
 
 }
