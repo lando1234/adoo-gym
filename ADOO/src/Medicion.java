@@ -1,43 +1,32 @@
 
+import java.time.LocalDate;
 import java.util.*;
 
 /**
  * 
  */
-public class Medicion implements IAdapter {
+public class Medicion implements IAdapterMedicion {
 
-    /**
-     * Default constructor
-     */
+    private double peso;
+    private int masaMuscular;
+    private double porcentajeGrasa;
+    private LocalDate fecha;
+
+    private MedicionAdapter medicionAdapter;
+
     public Medicion() {
     }
 
-    /**
-     * 
-     */
-    private Double peso;
+    public Medicion(double peso, int masaMuscular, double porcentajeGrasa, LocalDate fecha) {
+        this.fecha = fecha;
+        this.peso = peso;
+        this.masaMuscular = masaMuscular;
+        this.porcentajeGrasa = porcentajeGrasa;
+    }
 
-    /**
-     * 
-     */
-    private int masaMuscular;
-
-    /**
-     * 
-     */
-    private Double porcentajeGrasa;
-
-    /**
-     * 
-     */
-    private Date fecha;
-
-    /**
-     * @return
-     */
     public Medicion obtenerMedicion() {
-        // TODO implement here
-        return null;
+        Medicion medi = medicionAdapter.obtenerMedicion();
+        return medi;
     }
 
     /**

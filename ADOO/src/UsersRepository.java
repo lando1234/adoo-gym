@@ -43,4 +43,6 @@ public class UsersRepository {
     public Optional<SocioDTO> getUser(String user, String password) {
         return this.users.stream().filter( u -> u.getUser().equals(user) && u.getPassword().equals(password)).findFirst();
     }
+
+
 }

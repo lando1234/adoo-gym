@@ -2,7 +2,7 @@
 /**
  * 
  */
-public enum exigenciaMuscular {
+public enum ExigenciaMuscular {
     BAJA,
     MEDIA,
     ALTA

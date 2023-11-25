@@ -47,6 +47,7 @@ public class SocioController {
     private Socio extractSocio(SocioDTO socio) {
         // obtener Trofeos
         // obtener Mediciones
+        return null;
     }
 
 }

@@ -1,44 +1,26 @@
-
-import java.util.*;
-
 /**
  * 
  */
-public class Balanza implements IAdapter {
+public class Balanza {
 
-    /**
-     * Default constructor
-     */
     public Balanza() {
     }
 
-    /**
-     * 
-     */
-    public void medirPeso() {
-        // TODO implement here
+    public double medirPeso() {
+        double pesoPersona= 87.5;
+        return pesoPersona;
     }
 
-    /**
-     * 
-     */
-    public void medirMasaMuscular() {
-        // TODO implement here
+    public int medirMasaMuscular() {
+        int masa = 10;
+        return masa;
     }
 
-    /**
-     * 
-     */
-    public void medirPorcentajeGrasa() {
-        // TODO implement here
+    public double medirPorcentajeGrasa() {
+        double grasa= 5;
+        return grasa;
     }
 
-    /**
-     * @return
-     */
-    public Medicion obtenerMedicion() {
-        // TODO implement here
-        return null;
-    }
+
 
 }

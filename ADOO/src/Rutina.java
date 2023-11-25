@@ -4,15 +4,19 @@ import java.util.*;
 /**
  * 
  */
-public abstract class Rutina {
-    public Rutina() {
+public class Rutina {
+    public Rutina(List<Entrenamiento> entrenamientos, int diasEntrenamiento) {
+        this.entrenamientos=entrenamientos;
+        this.diasEntrenamiento= diasEntrenamiento;
+        this.duracion=4;
+        this.cumplida = false;
     }
 
-    private List <Entrenamiento> entrenamiento;
-    private String diasEntrenamiento;
-    private Integer duracion;
-
+    private List <Entrenamiento> entrenamientos;
+    private int diasEntrenamiento;
+    private int duracion;
     private Boolean cumplida;
+    private Entrenamiento entrenamiento;
 
     public Boolean seCumplio() {
         // TODO implement here
@@ -35,19 +39,11 @@ public abstract class Rutina {
         return null;
     }
 
-    public List<Entrenamiento> getEntrenamiento() {
-        return entrenamiento;
-    }
-
-    public void setEntrenamiento(List<Entrenamiento> entrenamiento) {
-        this.entrenamiento = entrenamiento;
-    }
-
-    public String getDiasEntrenamiento() {
+    public int getDiasEntrenamiento() {
         return diasEntrenamiento;
     }
 
-    public void setDiasEntrenamiento(String diasEntrenamiento) {
+    public void setDiasEntrenamiento(int diasEntrenamiento) {
         this.diasEntrenamiento = diasEntrenamiento;
     }
 
@@ -66,4 +62,6 @@ public abstract class Rutina {
     public void setCumplida(Boolean cumplida) {
         this.cumplida = cumplida;
     }
+
+
 }

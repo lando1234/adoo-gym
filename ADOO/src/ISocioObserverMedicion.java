@@ -1,15 +1,14 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
  * 
  */
-public class ISocioObserver implements IAdapter, IAdapterLogin {
+public class ISocioObserverMedicion implements IAdapterLogin {
 
     /**
      * Default constructor
      */
-    public ISocioObserver() {
+    public ISocioObserverMedicion() {
     }
 
     /**
@@ -79,13 +78,6 @@ public class ISocioObserver implements IAdapter, IAdapterLogin {
         return null;
     }
 
-    /**
-     * @return
-     */
-    public Medicion obtenerMedicion() {
-        // TODO implement here
-        return null;
-    }
 
     /**
      * @param Login 

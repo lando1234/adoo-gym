@@ -1,10 +1,7 @@
-
-import java.util.*;
-
 /**
  * 
  */
-public interface IAdapter {
+public interface IAdapterMedicion {
 
     /**
      * @return

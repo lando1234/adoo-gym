@@ -11,10 +11,12 @@ public class Socio {
     private String user;
     private String password;
     private List<ITrofeoObserver> observers = new ArrayList<ITrofeoObserver>();
+    private Medicion medidor;
 
 
 
-    public void registrarMedicion(Medicion medicion) {
+    public void registrarMedicion() {
+        Medicion medicion = medidor.obtenerMedicion();
         this.mediciones.add(medicion);
     }
 

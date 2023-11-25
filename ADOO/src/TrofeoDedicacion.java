@@ -1,15 +1,12 @@
-
-import java.util.*;
-
 /**
  * 
  */
-public class TrofeDedicacion extends ITrofeoObserver {
+public class TrofeoDedicacion extends ITrofeoObserver {
 
     /**
      * Default constructor
      */
-    public TrofeDedicacion() {
+    public TrofeoDedicacion() {
     }
 
     /**
