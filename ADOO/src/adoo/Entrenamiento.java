@@ -55,4 +55,8 @@ public class Entrenamiento {
     public int hashCode() {
         return Objects.hash(ejercicios, ejerciciosRealizados, fecha, completo);
     }
+
+    public List<Ejercicio> getEjercicios() {
+        return ejercicios;
+    }
 }
