@@ -1,6 +1,4 @@
-package adoo;
-
-import java.util.*;
+package adoo.controller;
 
 /**
  * 

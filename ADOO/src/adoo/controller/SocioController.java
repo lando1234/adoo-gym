@@ -1,4 +1,6 @@
-package adoo;
+package adoo.controller;
+
+import adoo.*;
 
 import java.util.Optional;
 
