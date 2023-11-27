@@ -6,6 +6,8 @@ import adoo.objetivo.Objetivo;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
@@ -99,16 +101,39 @@ public class UnitTests {
         }
         System.out.println(ejercicio);
     }
+ @Test
+    public void socioMarcaEntrenamientoCompleto() {
+        // Crear un socio de prueba con un objetivo específico
+        Socio socio = new Socio();
+        socio.setEdad(25);
+        socio.setSexo("Masculino");
+        socio.setAltura(1.75);
+        socio.setUser("user1");
+        socio.setPassword("1234");
 
-    @Test
-    public void socioMarcaEntrenamientoCompleto(){
-        //Socio marca que completo el entrenamiento
+        // Crear un objetivo específico (puedes ajustar según tus necesidades)
+        Objetivo objetivo = new BajarDePeso();
+        socio.cambiarObjetivo(objetivo);
+
+        // Crear una lista de ejercicios para el entrenamiento
+        List<Ejercicio> ejerciciosEntrenamiento = new ArrayList<>();
+        ejerciciosEntrenamiento.add(new Ejercicio("Sentadillas", 30.0, 5, ExigenciaMuscular.ALTA, GrupoMuscular.PIERNAS));
+        ejerciciosEntrenamiento.add(new Ejercicio("Flexiones", 15.0, 3, ExigenciaMuscular.MEDIA, GrupoMuscular.PECHO));
+
+        // Crear una instancia de Entrenamiento
+        Entrenamiento entrenamiento = new Entrenamiento(ejerciciosEntrenamiento, LocalDate.now());
+
+        // Marcar cada ejercicio como completado
+        for (Ejercicio ejercicio : ejerciciosEntrenamiento) {
+            entrenamiento.ejercicioCompletado(ejercicio);
+        }
+
+        // Marcar el entrenamiento como completo
+        socio.marcarEntrenamientoCompleto(entrenamiento);
+     System.out.println("Entrenamiento marcado como completo");
     }
 
-    @Test
-    public void socioLogIn(){
-        //socio se loguee con datos almacenados
-    }
+
 
     @Test
     public void socioRecibeTrofeo(){

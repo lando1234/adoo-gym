@@ -120,7 +120,9 @@ public class Socio implements Observer {
         }
     }
 
-
+    public void marcarEntrenamientoCompleto(Entrenamiento entrenamiento) {
+        entrenamiento.setCompleto(true);
+    }
 
     public int setEdad(int i) {
         return edad;
