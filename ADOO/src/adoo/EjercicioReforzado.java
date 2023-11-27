@@ -12,4 +12,8 @@ public class EjercicioReforzado {
 
     private int repeticionesAgregadas;
 
+    public EjercicioReforzado(Double pesoAgregado, int repeticionesAgregadas) {
+        this.pesoAgregado = pesoAgregado;
+        this.repeticionesAgregadas = repeticionesAgregadas;
+    }
 }

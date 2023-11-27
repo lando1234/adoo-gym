@@ -34,6 +34,12 @@ public class Rutina {
         }
     }
 
+    public void reforzar(Integer repeticiones, double peso) {
+        this.entrenamientos.forEach( entrenamiento -> {
+            entrenamiento.getEjercicios().forEach( ejercicio -> ejercicio.setReforzado(new EjercicioReforzado(peso,repeticiones)));
+        });
+    }
+
     public int getDiasEntrenamiento() {
         return diasEntrenamiento;
     }

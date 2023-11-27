@@ -16,6 +16,7 @@ public class Ejercicio extends Entrenamiento {
     private Integer repeticiones;
     private Double pesoAsignado;
 
+    private EjercicioReforzado reforzado;
     public Ejercicio(String nombre, double duracion, Integer nivelAerobico, ExigenciaMuscular exigenciaMuscular, GrupoMuscular grupoMuscular) {
         this.nombre = nombre;
         this.duracion = duracion;
@@ -87,5 +88,9 @@ public class Ejercicio extends Entrenamiento {
 
     public void setGrupoMuscular(GrupoMuscular grupoMuscular) {
         this.grupoMuscular = grupoMuscular;
+    }
+
+    public void setReforzado(EjercicioReforzado reforzado) {
+        this.reforzado = reforzado;
     }
 }
