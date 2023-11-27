@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 
  */
-public class TonificarCuerpo extends Objetivo implements ObjetivoStrategy {
+public class TonificarCuerpo extends Objetivo {
     private double masaMuscularIdeal;
     private double grasaCorporalIdeal;
     private List<Ejercicio> listaEjercicios;

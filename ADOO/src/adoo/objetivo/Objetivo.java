@@ -51,6 +51,11 @@ public abstract class Objetivo implements ObjetivoStrategy {
         this.rutina = new Rutina(entrenamientos, dias);
     }
 
+    @Override
+    public void execute(Socio socio) {
+
+    }
+
     public String getNombre() {
         return nombre;
     }

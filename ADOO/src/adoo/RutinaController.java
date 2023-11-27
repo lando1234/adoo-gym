@@ -8,12 +8,6 @@ import java.util.*;
 public class RutinaController {
 
     /**
-     * Default constructor
-     */
-    public RutinaController() {
-    }
-
-    /**
      * @return
      */
     public void cumplirRutina() {
