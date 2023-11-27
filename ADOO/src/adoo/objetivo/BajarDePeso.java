@@ -10,9 +10,6 @@ import java.util.*;
 public class BajarDePeso extends Objetivo {
 
     private double pesoIdeal;
-    private Medicion medicionInicial;
-    private Socio socio;
-    private Rutina rutina;
     private int diasEntrenamiento;
     private Entrenamiento entrenamiento;
     private List<Ejercicio> listaEjercicios;
@@ -24,27 +21,9 @@ public class BajarDePeso extends Objetivo {
 
         inicializarEjercicios();
     }
-
-    public Boolean estaCumplido() {
-        // TODO implement here
-        return null;
-    }
-    public void obtenerRutinaObjetivo(){
-        List<Entrenamiento> entrenamientos = new ArrayList<>();
-        entrenamientos.add(entrenamiento.armarEntrenamientoPiernasHombros(listaEjercicios));
-        entrenamientos.add(entrenamiento.armarEntrenamientoEspaldaBicep(listaEjercicios));
-        entrenamientos.add(entrenamiento.armarEntrenamientoPechoBrazos(listaEjercicios));
-
-        Rutina rutinaElaborada = new Rutina(entrenamientos,this.diasEntrenamiento);
-        this.rutina= rutinaElaborada;
-    }
-
-    public void calcularPesoIdeal(Socio socio){
-
-    }
-
-    private List<Ejercicio> obtenerEjercicios() {
-        return listaEjercicios;
+    @Override
+    public Boolean estaCumplido(Socio socio) {
+        return socio.getMediciones().getLast().getPeso() <= this.pesoIdeal;
     }
 
     private void inicializarEjercicios() {

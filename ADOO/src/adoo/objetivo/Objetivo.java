@@ -3,6 +3,7 @@ package adoo.objetivo;
 import adoo.Ejercicio;
 import adoo.Entrenamiento;
 import adoo.Rutina;
+import adoo.Socio;
 
 import java.util.*;
 
@@ -26,10 +27,8 @@ public abstract class Objetivo implements ObjetivoStrategy {
         return getListaEntrenamientos();
     }
     private List<Ejercicio> listaEjercicios;
-    public Objetivo() {
-    }
 
-    public Rutina armarRutina(Integer dias) {
+    public void armarRutina(Integer dias) {
         Integer tiempoMin = this.duracionMin;
         Integer tiempoMax = this.duracionMax;
         List<Entrenamiento> entrenamientos = new ArrayList<>();
@@ -48,9 +47,9 @@ public abstract class Objetivo implements ObjetivoStrategy {
         }
 
 
-        return new Rutina(entrenamientos, dias);
+
+        this.rutina = new Rutina(entrenamientos, dias);
     }
-    public abstract Boolean estaCumplido();
 
     public String getNombre() {
         return nombre;

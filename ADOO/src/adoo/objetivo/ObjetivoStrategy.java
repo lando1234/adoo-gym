@@ -1,5 +1,7 @@
 package adoo.objetivo;
 
+import adoo.Socio;
+
 import java.util.*;
 
 /**
@@ -10,6 +12,6 @@ public interface ObjetivoStrategy {
     /**
      * @return
      */
-    public Boolean estaCumplido();
+    public Boolean estaCumplido(Socio socio);
 
 }

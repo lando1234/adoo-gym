@@ -36,5 +36,23 @@ public class Medicion implements IAdapterMedicion {
         // TODO implement here
     }
 
+    public double getPeso() {
+        return peso;
+    }
 
+    public int getMasaMuscular() {
+        return masaMuscular;
+    }
+
+    public double getPorcentajeGrasa() {
+        return porcentajeGrasa;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public MedicionAdapter getMedicionAdapter() {
+        return medicionAdapter;
+    }
 }

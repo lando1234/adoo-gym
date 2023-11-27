@@ -11,17 +11,16 @@ import java.util.List;
 public class MantenerFigura extends Objetivo {
 
     private Integer pesoOscila;
+    private Integer pesoInicial;
     private List<Ejercicio> listaEjercicios;
-
-    private List<Entrenamiento> listaEntrenamientos;
 
     /**
      * Default constructor
      */
-    public MantenerFigura(Integer pesoOscila) {
+    public MantenerFigura(Integer pesoInicial, Integer pesoOscila) {
         listaEjercicios = new ArrayList<>();
-        listaEntrenamientos = new ArrayList<>();
         this.pesoOscila = pesoOscila;
+        this.pesoInicial = pesoInicial;
 
         inicializarEjercicios();
     }
@@ -29,9 +28,11 @@ public class MantenerFigura extends Objetivo {
     /**
      * @return
      */
-    public Boolean estaCumplido() {
-        // TODO implement here
-        return null;
+    @Override
+    public Boolean estaCumplido(Socio socio) {
+
+        Medicion medicion = socio.getMediciones().getLast();
+        return medicion.getPeso() < this.pesoInicial + this.pesoOscila && medicion.getPeso() > this.pesoInicial - this.pesoOscila;
     }
     private void inicializarEjercicios() {
         // Ejemplos de ejercicios para cada grupo y objetivo
@@ -48,5 +49,4 @@ public class MantenerFigura extends Objetivo {
         listaEjercicios.add(new Ejercicio("Aerobico 11", 15, 4, ExigenciaMuscular.MEDIA, GrupoMuscular.ESPALDA));
         listaEjercicios.add(new Ejercicio("Aerobico 12", 15, 2, ExigenciaMuscular.MEDIA, GrupoMuscular.BRAZOS));
     }
-
 }

@@ -19,7 +19,7 @@ public class UsersRepository {
               20,
               "M",
               1.8,
-              new TonificarCuerpo(80),
+              new TonificarCuerpo(80, 5),
               "fran",
               "fran"));
 
@@ -34,7 +34,7 @@ public class UsersRepository {
                 24,
                 "M",
                 1.6,
-                new MantenerFigura(4),
+                new MantenerFigura(80,4),
                 "mati",
                 "mati"));
     }

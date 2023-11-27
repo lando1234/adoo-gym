@@ -9,7 +9,8 @@ import java.util.List;
  * 
  */
 public class TonificarCuerpo extends Objetivo implements ObjetivoStrategy {
-    private Integer masaMuscularIdeal;
+    private double masaMuscularIdeal;
+    private double grasaCorporalIdeal;
     private List<Ejercicio> listaEjercicios;
 
     private List<Entrenamiento> listaEntrenamientos;
@@ -19,11 +20,11 @@ public class TonificarCuerpo extends Objetivo implements ObjetivoStrategy {
     /**
      * Default constructor
      */
-    public TonificarCuerpo(Integer masaMuscularIdeal) {
+    public TonificarCuerpo(double masaMuscularIdeal, double grasaCorporalIdeal) {
         listaEjercicios = new ArrayList<>();
         listaEntrenamientos = new ArrayList<>();
         this.masaMuscularIdeal = masaMuscularIdeal;
-
+        this.grasaCorporalIdeal = grasaCorporalIdeal;
         inicializarEjercicios();
     }
 
@@ -31,9 +32,12 @@ public class TonificarCuerpo extends Objetivo implements ObjetivoStrategy {
     /**
      * @return
      */
-    public Boolean estaCumplido() {
+    @Override
+    public Boolean estaCumplido(Socio socio) {
 
-        return null;
+        Medicion medicion = socio.getMediciones().getLast();
+
+        return this.masaMuscularIdeal <= medicion.getMasaMuscular() && this.grasaCorporalIdeal >= medicion.getPorcentajeGrasa();
     }
     private void inicializarEjercicios() {
         // Ejemplos de ejercicios para cada grupo y objetivo
