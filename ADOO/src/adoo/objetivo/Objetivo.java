@@ -1,9 +1,6 @@
 package adoo.objetivo;
 
-import adoo.Ejercicio;
-import adoo.Entrenamiento;
-import adoo.Rutina;
-import adoo.Socio;
+import adoo.*;
 
 import java.util.*;
 
@@ -55,7 +52,24 @@ public abstract class Objetivo implements ObjetivoStrategy {
     public void execute(Socio socio) {
 
     }
+    public boolean esEjercicioAdecuado(Ejercicio ejercicio) {
+        // Implementa la lógica según los criterios del objetivo
+        // Puedes verificar el tipo de objetivo (BajarDePeso, MantenerFigura, TonificarCuerpo) y aplicar criterios específicos
+        // Por ejemplo, en BajarDePeso, podría verificar el nivel aeróbico, exigencia muscular, etc.
+        // Retorna true si el ejercicio es adecuado, false en caso contrario.
 
+        // Ejemplo simple para cualquier objetivo (puedes ajustar según tus necesidades)
+        return ejercicio.getNivelAerobico() <= 3 && ejercicio.getExigenciaMuscular() == ExigenciaMuscular.ALTA;
+    }
+    public void agregarEntrenamiento(Entrenamiento entrenamiento) {
+        // Agrega la lógica para agregar el entrenamiento específico del objetivo
+        // En este caso, agrega el ejercicio a la lista de ejercicios del objetivo
+        if (entrenamiento instanceof Ejercicio) {
+            listaEjercicios.add((Ejercicio) entrenamiento);
+        } else {
+            // Manejar otro tipo de entrenamiento si es necesario
+        }
+    }
     public String getNombre() {
         return nombre;
     }

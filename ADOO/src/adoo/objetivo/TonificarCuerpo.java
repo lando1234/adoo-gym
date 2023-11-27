@@ -35,7 +35,7 @@ public class TonificarCuerpo extends Objetivo {
     @Override
     public Boolean estaCumplido(Socio socio) {
 
-        Medicion medicion = socio.getMediciones().getLast();
+        Medicion medicion = socio.getMediciones().get(socio.getMediciones().size()-1);
 
         return this.masaMuscularIdeal <= medicion.getMasaMuscular() && this.grasaCorporalIdeal >= medicion.getPorcentajeGrasa();
     }
@@ -54,4 +54,5 @@ public class TonificarCuerpo extends Objetivo {
         listaEjercicios.add(new Ejercicio("tc 11", 30, 4, ExigenciaMuscular.ALTA, GrupoMuscular.ESPALDA));
         listaEjercicios.add(new Ejercicio("tc 12", 30, 2, ExigenciaMuscular.ALTA, GrupoMuscular.BRAZOS));
     }
+
 }

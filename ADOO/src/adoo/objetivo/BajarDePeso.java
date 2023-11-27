@@ -23,7 +23,7 @@ public class BajarDePeso extends Objetivo {
     }
     @Override
     public Boolean estaCumplido(Socio socio) {
-        return socio.getMediciones().getLast().getPeso() <= this.pesoIdeal;
+        return socio.getMediciones().get(socio.getMediciones().size()-1).getPeso() <= this.pesoIdeal;
     }
 
     private void inicializarEjercicios() {
@@ -41,4 +41,16 @@ public class BajarDePeso extends Objetivo {
         listaEjercicios.add(new Ejercicio("Remo con barra", 40.0, 4, ExigenciaMuscular.ALTA, GrupoMuscular.ESPALDA));
         listaEjercicios.add(new Ejercicio("Bíceps curls", 20.0, 3, ExigenciaMuscular.MEDIA, GrupoMuscular.BRAZOS));
     }
+    @Override
+    public boolean esEjercicioAdecuado(Ejercicio ejercicio) {
+        // Verificar si el ejercicio es aeróbico y tiene un nivel igual o mayor a 3
+        boolean esAerobico = ejercicio.getNivelAerobico() != null && ejercicio.getNivelAerobico() >= 3;
+
+        // Verificar si la duración del ejercicio está entre 1 y 1.5 horas
+        boolean duracionAdecuada = ejercicio.getDuracion() >= 60 && ejercicio.getDuracion() <= 90;
+
+        // El ejercicio es adecuado si es aeróbico y tiene una duración adecuada
+        return esAerobico && duracionAdecuada;
+    }
+
 }

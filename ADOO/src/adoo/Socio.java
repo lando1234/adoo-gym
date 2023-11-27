@@ -16,13 +16,54 @@ public class Socio implements Observer {
     private String user;
     private String password;
     private List<ITrofeoObserver> observers = new ArrayList<ITrofeoObserver>();
-    private Medicion medidor;
+    private IAdapterMedicion medidor;
+
 
 
 
     public void registrarMedicion() {
         Medicion medicion = medidor.obtenerMedicion();
         this.mediciones.add(medicion);
+    }
+
+    public IAdapterMedicion getMedidor() {
+        return medidor;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public void setAltura(Double altura) {
+        this.altura = altura;
+    }
+
+    public void setObjetivo(Objetivo objetivo) {
+        this.objetivo = objetivo;
+    }
+
+    public void setTrofeos(List<ITrofeoObserver> trofeos) {
+        this.trofeos = trofeos;
+    }
+
+    public void setMediciones(List<Medicion> mediciones) {
+        this.mediciones = mediciones;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setObservers(List<ITrofeoObserver> observers) {
+        this.observers = observers;
+    }
+
+    public void setMedidor(IAdapterMedicion medidor) {
+        this.medidor = medidor;
     }
 
     public void cambiarObjetivo(Objetivo objetivo){
@@ -68,4 +109,21 @@ public class Socio implements Observer {
     @Override
     public void update() {
     }
+    public void ingresarDatosEjercicio(Ejercicio ejercicio) {
+        // Verificar que el ejercicio es adecuado para el objetivo del socio
+        if (objetivo.esEjercicioAdecuado(ejercicio)) {
+            // Agregar el ejercicio a la lista de entrenamientos del objetivo del socio
+            objetivo.agregarEntrenamiento(ejercicio);
+        } else {
+            // Imprimir un mensaje o lanzar una excepción si el ejercicio no es adecuado para el objetivo
+            System.out.println("El ejercicio no es adecuado para el objetivo del socio.");
+        }
+    }
+
+
+
+    public int setEdad(int i) {
+        return edad;
+    }
 }
+

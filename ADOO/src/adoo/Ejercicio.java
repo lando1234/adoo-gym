@@ -24,8 +24,18 @@ public class Ejercicio extends Entrenamiento {
         this.grupoMuscular = grupoMuscular;
 
     }
+    @Override
+    public String toString() {
+        return "Ejercicio{" +
+                "nombre='" + nombre + '\'' +
+                ", duracion=" + duracion +
+                ", nivelAerobico=" + nivelAerobico +
+                ", exigenciaMuscular=" + exigenciaMuscular +
+                ", grupoMuscular=" + grupoMuscular +
+                '}';
+    }
 
-    public String getNombre() {
+        public String getNombre() {
         return nombre;
     }
 
