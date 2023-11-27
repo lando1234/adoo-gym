@@ -35,7 +35,7 @@ public class TonificarCuerpo extends Objetivo {
     @Override
     public Boolean estaCumplido(Socio socio) {
 
-        Medicion medicion = socio.getMediciones().getLast();
+        Medicion medicion = socio.getMediciones().get(socio.getMediciones().size()-1);
 
         return this.masaMuscularIdeal <= medicion.getMasaMuscular() && this.grasaCorporalIdeal >= medicion.getPorcentajeGrasa();
     }

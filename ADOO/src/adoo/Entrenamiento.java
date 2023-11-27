@@ -38,7 +38,7 @@ public class Entrenamiento {
         this.ejercicios.remove(ejercicio);
     }
     public Ejercicio comenzarProximo() {
-        return this.ejercicios.getFirst();
+        return this.ejercicios.get(0);
     }
 
 

@@ -31,7 +31,7 @@ public class MantenerFigura extends Objetivo {
     @Override
     public Boolean estaCumplido(Socio socio) {
 
-        Medicion medicion = socio.getMediciones().getLast();
+        Medicion medicion = socio.getMediciones().get(socio.getMediciones().size()-1);
         return medicion.getPeso() < this.pesoInicial + this.pesoOscila && medicion.getPeso() > this.pesoInicial - this.pesoOscila;
     }
     private void inicializarEjercicios() {

@@ -23,7 +23,7 @@ public class BajarDePeso extends Objetivo {
     }
     @Override
     public Boolean estaCumplido(Socio socio) {
-        return socio.getMediciones().getLast().getPeso() <= this.pesoIdeal;
+        return socio.getMediciones().get(socio.getMediciones().size()-1).getPeso() <= this.pesoIdeal;
     }
 
     private void inicializarEjercicios() {
