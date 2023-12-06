@@ -19,6 +19,14 @@ public class SocioDTO {
         this.password = password;
 
     }
+    public SocioDTO(int edad, String sexo, Double altura, String user, String password) {
+        this.edad = edad;
+        this.sexo = sexo;
+        this.altura = altura;
+        this.user = user;
+        this.password = password;
+
+    }
 
     public int getEdad() {
         return edad;

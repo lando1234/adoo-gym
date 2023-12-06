@@ -1,19 +1,177 @@
 package adoo;
 
+import java.io.IOException;
+import java.util.Optional;
+import java.util.Scanner;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) {
-        // Press Opt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
 
-        // Press Ctrl+R or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        //Dar una bienvenida al sistema
+        System.out.println("Bienvenidos a GYMSHARK");
+        System.out.println(" ");
+        System.out.println("Seleccione la opcion desdeada: 1-Registrarse 2-loguearse");
+        int opcion = scanner.nextInt();
+        if(opcion ==1){
+            SocioDTO socio = RegistrarSocio();
+        }
+        else{
+            SocioDTO socio = LogInSocio();
+        }
+        MenuInterno(socio);
 
-            // Press Ctrl+D to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Cmd+F8.
-            System.out.println("i = " + i);
+    }
+
+    private static SocioDTO RegistrarSocio() {
+        Scanner scanner = new Scanner(System.in);
+
+        // Solicitar datos al usuario
+        System.out.println("Ingrese la edad del socio:");
+        int edad = scanner.nextInt();
+        System.out.println("Ingrese el sexo del socio (M, F o -):");
+        String sexo = scanner.next();
+        System.out.println("Ingrese la altura del socio (mts):");
+        double altura = scanner.nextDouble();
+        System.out.println("Ingrese el nombre de usuario del socio:");
+        String user = scanner.next();
+        System.out.println("Ingrese la contraseña del socio:");
+        String password = scanner.next();
+
+        // Crear un objeto SocioDTO con los datos ingresados
+        SocioDTO nuevoSocio = new SocioDTO(edad, sexo, altura, user, password);
+
+        // Mostrar información del socio registrado
+        System.out.println("Socio registrado exitosamente:");
+        System.out.println("Edad: " + nuevoSocio.getEdad());
+        System.out.println("Sexo: " + nuevoSocio.getSexo());
+        System.out.println("Altura: " + nuevoSocio.getAltura());
+        System.out.println("Usuario: " + nuevoSocio.getUser());
+
+        return nuevoSocio;
+    }
+
+    private static SocioDTO LogInSocio() {
+        Scanner scanner = new Scanner(System.in);
+
+        // Solicitar datos al usuario
+        System.out.println("Ingrese el nombre de usuario:");
+        String user = scanner.next();
+
+        System.out.println("Ingrese la contraseña:");
+        String password = scanner.next();
+
+        // Verificar la existencia del usuario en el UsersRepository
+        UsersRepository UsersRespository = new UsersRepository(); // Asegúrate de tener esta clase implementada
+        Optional<SocioDTO> usuarioExiste = UsersRespository.getUser(user, password);
+
+        // Mostrar el resultado del login
+        if (usuarioExiste.isPresent()) {
+            System.out.println("Inicio de sesión exitoso. ¡Bienvenido, " + usuarioExiste.get().getUser() + "!");
+            return usuarioExiste.get();
+        } else {
+            System.out.println("Nombre de usuario o contraseña incorrectos. Por favor, inténtelo nuevamente.");
+            Optional<SocioDTO> usuario = Optional.of(LogInSocio());
+            return usuario.get();
         }
     }
+
+    public static void MenuInterno(SocioDTO socio) {
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+
+        // Bucle del menú
+        while (true) {
+            // Mostrar opciones al usuario
+            System.out.println("Menú de opciones:");
+            System.out.println("1. Medirse");
+            System.out.println("2. Elegir objetivo");
+            System.out.println("3. Entrenar");
+            System.out.println("4. Salir");
+            System.out.println("Ingrese el número de la opción deseada:");
+
+            // Obtener la opción del usuario
+            opcion = scanner.nextInt();
+
+            // Realizar acciones según la opción seleccionada
+            switch (opcion) {
+                case 1:
+                    RegistrarMedicion(socio);
+                    break;
+                case 2:
+                    ElegirObjetivo(socio);
+                    break;
+                case 3:
+                    MenuEntrenar(socio);
+                    break;
+                case 4:
+                    System.out.println("Saliendo del programa. ¡Hasta luego!");
+                    System.exit(0); // Salir del programa
+                    break;
+                default:
+                    System.out.println("Opción no válida. Por favor, elija una opción válida.");
+            }
+        }
+    }
+    public static void MenuEntrenar(SocioDTO socio){
+        Scanner scanner = new Scanner(System.in);
+        int opcionEntrenar;
+
+        // Bucle del menú de entrenamiento
+        while (true) {
+            // Mostrar opciones de entrenamiento al usuario
+            System.out.println("Menú de entrenamiento:");
+            System.out.println("1. Entrenar");
+            System.out.println("2. Ingresar datos de ejercicio");
+            System.out.println("3. Reforzar ejercicio");
+            System.out.println("4. Seleccionar entrenamiento");
+            System.out.println("5. Volver al menú principal");
+            System.out.println("Ingrese el número de la opción deseada:");
+
+            // Obtener la opción del usuario
+            opcionEntrenar = scanner.nextInt();
+
+            // Realizar acciones de entrenamiento según la opción seleccionada
+            switch (opcionEntrenar) {
+                case 1:
+                    socio.entrenar();
+                    break;
+                case 2:
+                    socio.entrenamiento.ingresarDatosDeEjercicio();
+                    break;
+                case 3:
+                    socio.entrenamiento.reforzarEjercicio();
+                    break;
+                case 4:
+                    socio.entrenamiento.seleccionarEntrenamiento();
+                    break;
+                case 5:
+                    return; // Volver al menú principal
+                default:
+                    System.out.println("Opción no válida. Por favor, elija una opción válida.");
+            }
+        }
+    }
+
+
+    public static void RegistrarMedicion() {
+    }
+
+    public static void ElegirObjetivo() {
+    }
+
+    //obtener trofeo alguno
+
+    //completar entrenamiento
+
+    //Reforzar un ejercicio
+
+    //Registrar los pesos y datos del ejercicio
+
+    //completar rutina
+
 }
+
+

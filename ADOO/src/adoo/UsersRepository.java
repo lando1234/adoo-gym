@@ -13,7 +13,7 @@ public class UsersRepository {
 
     private List<SocioDTO> users;
 
-    private UsersRepository() {
+    UsersRepository() {
       this.users = new ArrayList<>();
       this.users.add(new SocioDTO(
               20,

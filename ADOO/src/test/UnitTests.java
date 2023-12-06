@@ -24,6 +24,7 @@ public class UnitTests {
         socio.setUser("user1");
         socio.setPassword("1234");
 
+
         // Crear un objetivo de prueba
         Objetivo objetivo = new BajarDePeso();
         socio.cambiarObjetivo(objetivo);
