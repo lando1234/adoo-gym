@@ -25,6 +25,10 @@ public class MantenerFigura extends Objetivo {
         inicializarEjercicios();
     }
 
+    public MantenerFigura() {
+
+    }
+
     /**
      * @return
      */

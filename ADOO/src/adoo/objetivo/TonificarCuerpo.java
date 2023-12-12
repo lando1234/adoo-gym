@@ -28,6 +28,10 @@ public class TonificarCuerpo extends Objetivo {
         inicializarEjercicios();
     }
 
+    public TonificarCuerpo() {
+
+    }
+
 
     /**
      * @return

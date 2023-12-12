@@ -1,5 +1,10 @@
 package adoo;
 
+import adoo.*;
+import adoo.objetivo.BajarDePeso;
+import adoo.objetivo.MantenerFigura;
+import adoo.objetivo.TonificarCuerpo;
+
 import java.io.IOException;
 import java.util.Optional;
 import java.util.Scanner;
@@ -15,11 +20,12 @@ public class Main {
         System.out.println(" ");
         System.out.println("Seleccione la opcion desdeada: 1-Registrarse 2-loguearse");
         int opcion = scanner.nextInt();
+        SocioDTO socio = new SocioDTO();
         if(opcion ==1){
-            SocioDTO socio = RegistrarSocio();
+            socio = RegistrarSocio();
         }
         else{
-            SocioDTO socio = LogInSocio();
+            socio = LogInSocio();
         }
         MenuInterno(socio);
 
@@ -115,7 +121,8 @@ public class Main {
             }
         }
     }
-    public static void MenuEntrenar(SocioDTO socio){
+    public static void MenuEntrenar(SocioDTO socio2){
+        Socio socio = convertirSocioDTO(socio2);
         Scanner scanner = new Scanner(System.in);
         int opcionEntrenar;
 
@@ -139,16 +146,14 @@ public class Main {
                     socio.entrenar();
                     break;
                 case 2:
-                    socio.entrenamiento.ingresarDatosDeEjercicio();
+                    socio.ingresarDatosDeEjercicio();
                     break;
                 case 3:
-                    socio.entrenamiento.reforzarEjercicio();
+                    socio.reforzarEjercicio();
                     break;
                 case 4:
-                    socio.entrenamiento.seleccionarEntrenamiento();
-                    break;
-                case 5:
                     return; // Volver al menú principal
+
                 default:
                     System.out.println("Opción no válida. Por favor, elija una opción válida.");
             }
@@ -156,21 +161,63 @@ public class Main {
     }
 
 
-    public static void RegistrarMedicion() {
+    public static void RegistrarMedicion(SocioDTO socio) {
+        Socio socioNormal = convertirSocioDTO(socio);
+        socioNormal.registrarMedicion();
     }
 
-    public static void ElegirObjetivo() {
+    public static void ElegirObjetivo(SocioDTO socio) {
+        Socio socioNormal = convertirSocioDTO(socio);
+
+        System.out.println("Objetivos disponibles:");
+        System.out.println("1. Tonificar Cuerpo");
+        System.out.println("2. Mantener Figura");
+        System.out.println("3. Bajar de Peso");
+
+        Scanner scanner = new Scanner(System.in);
+
+        int opcion;
+
+        do {
+            System.out.print("Elige un objetivo (1-3): ");
+            opcion = scanner.nextInt();
+        } while (opcion < 1 || opcion > 3);
+
+        // Asigna el objetivo seleccionado al socio (reemplaza "socio" con el nombre de tu clase o instancia)
+        switch (opcion) {
+            case 1:
+                TonificarCuerpo obj = new TonificarCuerpo();
+                socioNormal.setObjetivo(obj);
+                break;
+            case 2:
+                MantenerFigura obj2 = new MantenerFigura();
+                socioNormal.setObjetivo(obj2);
+                break;
+            case 3:
+                BajarDePeso obj3 = new BajarDePeso();
+                socioNormal.setObjetivo(obj3);
+                break;
+            default:
+                System.out.println("Opción no válida");
+        }
+
+        System.out.println("Objetivo seleccionado: " + socio.getObjetivo());
     }
 
-    //obtener trofeo alguno
 
-    //completar entrenamiento
 
-    //Reforzar un ejercicio
 
-    //Registrar los pesos y datos del ejercicio
+    public static Socio convertirSocioDTO(SocioDTO socioDto){
+        Socio socioNormal = new Socio();
+        socioNormal.setEdad(socioDto.getEdad());
+        socioNormal.setAltura(socioDto.getAltura());
+        socioNormal.setSexo(socioDto.getSexo());
+        socioNormal.setObjetivo(socioDto.getObjetivo());
+        socioNormal.setPassword(socioDto.getPassword());
+        socioNormal.setUser(socioDto.getUser());
 
-    //completar rutina
+        return socioNormal;
+    }
 
 }
 

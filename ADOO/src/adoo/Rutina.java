@@ -62,4 +62,8 @@ public class Rutina {
         this.duracion = duracion;
     }
 
+    public List<Entrenamiento> getEntrenamientos(){
+        return this.entrenamientos;
+    }
+
 }
