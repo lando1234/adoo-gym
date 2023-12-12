@@ -28,6 +28,10 @@ public class SocioDTO {
 
     }
 
+    public SocioDTO() {
+
+    }
+
     public int getEdad() {
         return edad;
     }

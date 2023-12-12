@@ -5,6 +5,7 @@ import adoo.observer.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Socio implements Observer {
     private int edad;
@@ -127,5 +128,62 @@ public class Socio implements Observer {
     public int setEdad(int i) {
         return edad;
     }
+
+    public void entrenar(){
+        this.objetivo.getRutina().completar(this.objetivo.getRutina().getEntrenamientos().getFirst());
+
+
+        }
+
+    public void ingresarDatosDeEjercicio() {
+        Scanner scanner = new Scanner(System.in);
+        List<Ejercicio> ejercicios = this.objetivo.getRutina().getEntrenamientos().getFirst().getEjercicios();
+        int i = 1;
+        for (Ejercicio ej : ejercicios){
+            System.out.println(i + ej.getNombre());
+            i += 1;
+        }
+
+        System.out.println("seleccione el ejercicio que desea ingresar los datos: ");
+        int opcion = scanner.nextInt();
+        Ejercicio ejercicioAIngresar = ejercicios.get(opcion-1);
+        System.out.println("ingrese cantidad de series: ");
+        int cantSeries = scanner.nextInt();
+        System.out.println("ingrese cantidad de repeticiones: ");
+        int cantRepes = scanner.nextInt();
+        System.out.println("ingrese peso asignado: ");
+        double cantPeso = scanner.nextDouble();
+
+        ejercicioAIngresar.setPesoAsignado(cantPeso);
+        ejercicioAIngresar.setRepeticiones(cantRepes);
+        ejercicioAIngresar.setSeries(cantSeries);
+
+
+    }
+
+    public void reforzarEjercicio() {
+        Scanner scanner = new Scanner(System.in);
+        List<Ejercicio> ejercicios = this.objetivo.getRutina().getEntrenamientos().getFirst().getEjercicios();
+        int i = 1;
+        for (Ejercicio ej : ejercicios){
+            System.out.println(i + ej.getNombre());
+            i += 1;
+        }
+
+        System.out.println("seleccione el ejercicio que desea reforzar: ");
+        int opcion = scanner.nextInt();
+        Ejercicio ejercicioAIngresar = ejercicios.get(opcion-1);
+        System.out.println("ingrese cantidad de series: ");
+        int cantSeries = scanner.nextInt();
+        System.out.println("ingrese cantidad de repeticiones: ");
+        int cantRepes = scanner.nextInt();
+        System.out.println("ingrese peso asignado: ");
+        double cantPeso = scanner.nextDouble();
+
+        ejercicioAIngresar.setPesoAsignado(cantPeso);
+        ejercicioAIngresar.setRepeticiones(cantRepes);
+        ejercicioAIngresar.setSeries(cantSeries);
+    }
 }
+
 
