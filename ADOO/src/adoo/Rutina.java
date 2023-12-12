@@ -13,11 +13,14 @@ public class Rutina {
     private int diasEntrenamiento;
     private int duracion;
 
-    public Rutina(List<Entrenamiento> entrenamientos, int diasEntrenamiento) {
+    private TrofeoConstancia trofeoConstancia;
+
+    public Rutina(List<Entrenamiento> entrenamientos, int diasEntrenamiento, Socio socio) {
         this.entrenamientos=entrenamientos;
         this.diasEntrenamiento= diasEntrenamiento;
         this.duracion=4;
         this.completados = new ArrayList<>();
+        this.trofeoConstancia = new TrofeoConstancia(socio);
     }
     public Boolean seCumplio() {
         return this.entrenamientos.isEmpty();
@@ -31,6 +34,9 @@ public class Rutina {
         if(entrenamiento.seCompleto()){
             this.entrenamientos.remove(entrenamiento);
             this.completados.add(entrenamiento);
+        }
+        if (this.entrenamientos.isEmpty()) {
+            this.trofeoConstancia.cumplirObjetivo();
         }
     }
 

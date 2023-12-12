@@ -4,14 +4,9 @@ package adoo;
  * 
  */
 public class TrofeoCreido extends ITrofeoObserver {
-
-    public TrofeoCreido() {
+    public TrofeoCreido(Socio socio) {
+        super(socio);
+        this.descripcion = "Trofeo otorgado por pesarse muchas veces!";
+        this.nombre = "Trofeo al creído";
     }
-
-    private Socio socio;
-
-    public void chequearPremio() {
-        // TODO implement here
-    }
-
 }

@@ -7,16 +7,12 @@ import adoo.objetivo.Objetivo;
  */
 public class TrofeoDedicacion extends ITrofeoObserver {
 
-    /**
-     * Default constructor
-     */
-    public TrofeoDedicacion() {
-    }
 
-    /**
-     * 
-     */
-    private Objetivo objetivo;
+    public TrofeoDedicacion(Socio socio) {
+        super(socio);
+        this.descripcion = "Trofeo otorgado por cumplir el objetivo!";
+        this.nombre = "Trofeo a la dedicación";
+    }
 
     /**
      * @return

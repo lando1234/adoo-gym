@@ -34,7 +34,13 @@ public class Notificador implements EstrategiaNotificacion {
      * @return
      */
     public void enviar(Notificacion notificacion) {
-        // TODO implement here
+        //TODO notificar
+    }
+
+    @Override
+    public void enviar(Socio socio, String nombre, String descripcion) {
+        Notificacion noti = new Notificacion(descripcion,nombre,socio);
+        this.enviar(notificacion);
     }
 
 }

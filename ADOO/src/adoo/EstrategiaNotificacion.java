@@ -11,4 +11,5 @@ public interface EstrategiaNotificacion {
      */
     public void enviar(Notificacion notificacion);
 
+    void enviar(Socio socio, String nombre, String descripcion);
 }

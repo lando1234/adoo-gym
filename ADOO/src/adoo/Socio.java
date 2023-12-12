@@ -3,7 +3,9 @@ package adoo;
 import adoo.objetivo.Objetivo;
 import adoo.observer.Observer;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Socio implements Observer {
@@ -24,6 +26,10 @@ public class Socio implements Observer {
     public void registrarMedicion() {
         Medicion medicion = medidor.obtenerMedicion();
         this.mediciones.add(medicion);
+        List<Medicion> lista = this.mediciones.stream().filter( medi -> medi.getFecha().getMonth().equals(LocalDate.now().getMonth())).toList();
+        if( lista.size() > 3 ) {
+            this.observers.add(new TrofeoCreido(this));
+        }
     }
 
     public IAdapterMedicion getMedidor() {

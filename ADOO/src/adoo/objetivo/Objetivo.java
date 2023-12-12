@@ -25,7 +25,11 @@ public abstract class Objetivo implements ObjetivoStrategy {
     }
     private List<Ejercicio> listaEjercicios;
 
-    public void armarRutina(Integer dias) {
+    protected TrofeoDedicacion trofeoDedicacion;
+
+
+
+    public void armarRutina(Integer dias, Socio socio) {
         Integer tiempoMin = this.duracionMin;
         Integer tiempoMax = this.duracionMax;
         List<Entrenamiento> entrenamientos = new ArrayList<>();
@@ -45,12 +49,14 @@ public abstract class Objetivo implements ObjetivoStrategy {
 
 
 
-        this.rutina = new Rutina(entrenamientos, dias);
+        this.rutina = new Rutina(entrenamientos, dias, socio);
     }
 
     @Override
     public void execute(Socio socio) {
-
+        if( this.rutina.seCumplio()) {
+            this.trofeoDedicacion.cumplirObjetivo();
+        }
     }
     public boolean esEjercicioAdecuado(Ejercicio ejercicio) {
         // Implementa la lógica según los criterios del objetivo

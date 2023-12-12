@@ -7,12 +7,18 @@ public abstract class ITrofeoObserver {
 
     public ITrofeoObserver() {
     }
-    private String nombre;
-    private String descripcion;
+    protected String nombre;
+    protected String descripcion;
     private Notificador notificador;
 
-    public void chequearPremio() {
-        // TODO implement here
+    private Socio socio;
+
+    public ITrofeoObserver(Socio socio) {
+        this.socio = socio;
+        this.notificador = new Notificador();
     }
 
+    public void cumplirObjetivo() {
+        this.notificador.enviar(socio, nombre, descripcion);
+    }
 }
